@@ -21,4 +21,15 @@ const generateJWT = (uid) => {
    });
 };
 
-module.exports = { generateJWT };
+const verifyJWT = (token = '') => {
+   try {
+      const { uid } = jwt.verify(token, process.env.SECRET_JWT_SEED);
+
+      return [true, uid];
+   } catch (error) {
+      console.log(error);
+      return [false];
+   }
+};
+
+module.exports = { generateJWT, verifyJWT };
