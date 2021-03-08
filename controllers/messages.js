@@ -11,7 +11,7 @@ exports.getMessages = async (req, res) => {
             { from: to, to: uid },
          ],
       })
-         .sort({ createdAt: 'desc' })
+         .sort({ createdAt: 'asc' })
          .limit(30);
 
       res.json({
